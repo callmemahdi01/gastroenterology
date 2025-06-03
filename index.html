@@ -1,137 +1,171 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
-  <meta charset="UTF-8">
-  <title>کورس فیزیولوژی گوارش - برنامه جلسات</title>
-  <style>
-    body {
-      font-family: "Vazir", sans-serif;
-      background: #f4f4f4;
-      text-align: center;
-      padding-top: 50px;
-      direction: rtl;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فهرست جلسات جزوه فیزیوپاتولوژی گوارش</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* استایل‌های اضافی برای صفحه فهرست */
+        .session-list-container {
+            padding: 20px 0;
+        }
+        .session-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .session-list li {
+            background-color: #f8f9fa; /* یک پس‌زمینه خنثی برای هر آیتم */
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            overflow: hidden; /* برای اطمینان از اینکه محتوای داخلی از گوشه‌های گرد بیرون نزند */
+        }
+        .session-list li:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+        .session-list a {
+            text-decoration: none;
+            color: #34495e; /* رنگ متن اصلی برای عنوان جلسه */
+            display: flex; /* استفاده از فلکس برای چینش بهتر */
+            align-items: center; /* تراز عمودی آیتم‌ها در مرکز */
+            padding: 25px 20px; /* پدینگ داخلی بیشتر */
+            transition: background-color 0.2s ease;
+        }
+        .session-list a:hover {
+            background-color: #e9ecef; /* تغییر رنگ پس‌زمینه لینک هنگام هاور */
+        }
+        .session-number-badge {
+            background-color: #4CAF50; /* رنگ سبز اصلی از استایل‌های قبلی */
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px; /* گرد کردن کامل برای حالت بیضی/دایره */
+            font-size: 1em;
+            font-weight: 600;
+            margin-left: 20px; /* فاصله از متن عنوان */
+            min-width: 40px; /* حداقل عرض برای اعداد تک رقمی */
+            text-align: center;
+        }
+        .session-title-text {
+            font-size: 1.3em; /* اندازه فونت عنوان جلسه */
+            font-weight: 600;
+            color: #2c3e50; /* رنگ تیره‌تر برای عنوان */
+        }
 
-    h1 {
-      color: #2e7d32;
-      margin-bottom: 30px;
-    }
-
-    .session {
-      background-color: #e8f5e9;
-      border: 1px solid #c8e6c9;
-      border-radius: 10px;
-      padding: 15px;
-      margin: 10px auto;
-      width: 90%;
-      max-width: 600px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .session-title {
-      font-size: 16px;
-      font-weight: bold;
-      color: #388e3c;
-      margin-bottom: 5px;
-    }
-
-    .session-teacher {
-      font-size: 14px;
-      color: #555;
-      margin-bottom: 10px;
-    }
-
-    .nav-button {
-      background-color: #81c784;
-      border: none;
-      color: white;
-      padding: 8px 20px;
-      font-size: 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .nav-button:hover {
-      background-color: #66bb6a;
-    }
-  </style>
+        /* استایل برای هدر و فوتر صفحه ایندکس */
+        header h1 {
+            font-size: 2.4em; /* کمی کوچکتر از هدر اصلی جلسات */
+        }
+        .container > h2 { /* استایل برای H2 مستقیما داخل کانتینر اگر استفاده شود */
+            color: #16a085;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>فهرست جلسات جزوه فیزیوپاتولوژی گوارش</h1>
+            <p style="text-align: center; font-size: 0.9em; color: #777;">تهیه شده توسط مهدی رضایی - <a target="_blank" href="https://callmemahdi01.github.io/about">درباره</a></p>
+        </header>
 
-  <h1>برنامه جلسات کورس فیزیولوژی گوارش</h1>
+        <section id="table-of-contents" class="session-list-container">
+            <h2>لیست جلسات</h2>
+            <ul class="session-list">
+                <li>
+                    <a href="1.html">
+                        <span class="session-number-badge">جلسه ۱</span>
+                        <span class="session-title-text">بیماری‌های متابولیک کبد (هموکروماتوزیس و ویلسون)</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="2.html">
+                        <span class="session-number-badge">جلسه ۲</span>
+                        <span class="session-title-text">هپاتیت‌های دارویی و بیماری کبد چرب غیرالکلی</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="3.html">
+                        <span class="session-number-badge">جلسه ۳</span>
+                        <span class="session-title-text">بیماری‌های پانکراس (حاد، مزمن و سرطان)</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="4.html">
+                        <span class="session-number-badge">جلسه ۴</span>
+                        <span class="session-title-text">بیماری‌های معده و دئودنوم</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="5.html">
+                        <span class="session-number-badge">جلسه ۵</span>
+                        <span class="session-title-text">بیماری‌های مری</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="6.html">
+                        <span class="session-number-badge">جلسه ۶</span>
+                        <span class="session-title-text">سرطان کبد</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="7.html">
+                        <span class="session-number-badge">جلسه ۷</span>
+                        <span class="session-title-text">بیماری التهابی روده (IBD)</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="8.html">
+                        <span class="session-number-badge">جلسه ۸</span>
+                        <span class="session-title-text">هپاتیت‌های حاد و مزمن ویروسی</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="9.html">
+                        <span class="session-number-badge">جلسه ۹</span>
+                        <span class="session-title-text">سوءجذب</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="10.html">
+                        <span class="session-number-badge">جلسه ۱۰</span>
+                        <span class="session-title-text">سمیولوژی و علائم بالینی در بیماری‌های گوارشی</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="11.html">
+                        <span class="session-number-badge">جلسه ۱۱</span>
+                        <span class="session-title-text">تست‌های بیوشیمیایی کبد و رویکرد تشخیصی</span>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="alert('در حال نوشتن جزوه ...')">
+                        <span class="session-number-badge">جلسه 12</span>
+                        <span class="session-title-text">سیروز کبدی</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="13.html">
+                        <span class="session-number-badge">جلسه ۱۳</span>
+                        <span class="session-title-text">بیماری‌های سیستم صفراوی</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
 
-  <div class="session">
-    <div class="session-title">بیماری‌های متابولیک کبد</div>
-    <div class="session-teacher">دکتر شمس پور</div>
-    <button class="nav-button" onclick="window.location.href='1.html'">جلسه ۱</button>
-  </div>
-
-  <div class="session">
-    <div class="session-title">داروهای گوارشی</div>
-    <div class="session-teacher">دکتر شمس پور</div>
-    <button class="nav-button" onclick="window.location.href='2.html'">جلسه ۲</button>
-  </div>
-
-  <div class="session">
-    <div class="session-title">بیماری‌های پانکراس</div>
-    <div class="session-teacher">دکتر اسلامی</div>
-    <button class="nav-button" onclick="window.location.href='3.html'">جلسه ۳</button>
-  </div>
-
-  <div class="session">
-    <div class="session-title">بیماری‌های معده و دئودنوم</div>
-    <div class="session-teacher">دکتر شمس نژاد</div>
-    <button class="nav-button" onclick="window.location.href='4.html'">جلسه ۴</button>
-  </div>
-
-  <div class="session">
-    <div class="session-title">بیماری‌های مری</div>
-    <div class="session-teacher">دکتر شمس نژاد</div>
-    <button class="nav-button" onclick="window.location.href='5.html'">جلسه ۵</button>
-  </div>
-
-  <div class="session">
-    <div class="session-title">کانسر کبد</div>
-    <div class="session-teacher">دکتر الفت</div>
-    <button class="nav-button" onclick="window.location.href='6.html'">جلسه ۶</button>
-  </div>
-
-  <div class="session">
-    <div class="session-title">بیماری‌های روده بزرگ</div>
-    <div class="session-teacher">دکتر احمدی</div>
-    <button class="nav-button" onclick="window.location.href='7.html'">جلسه ۷</button>
-  </div>
-
-  <div class="session">
-    <div class="session-title">هپاتیت‌های حاد و مزمن</div>
-    <div class="session-teacher">دکتر احمدی</div>
-    <button class="nav-button" onclick="window.location.href='8.html'">جلسه ۸</button>
-  </div>
-
-  <div class="session">
-    <div class="session-title">بیماری‌های روده باریک</div>
-    <div class="session-teacher">دکتر اسلامی</div>
-    <button class="nav-button" onclick="window.location.href='9.html'">جلسه ۹</button>
-  </div>
-
-  <div class="session">
-    <div class="session-title">سیروز و گوارش</div>
-    <div class="session-teacher">دکتر شمس نژاد</div>
-    <button class="nav-button" onclick="window.location.href='10.html'">جلسه ۱۰</button>
-  </div>
-
-  <div class="session">
-    <div class="session-title">رویکرد آزمایشگاهی به بیماری‌های کبدی</div>
-    <div class="session-teacher">دکتر شمس پور</div>
-    <button class="nav-button" onclick="window.location.href='11.html'">جلسه ۱۱</button>
-  </div>
-
-  <div class="session">
-    <div class="session-title">بیماری‌های سیستم صفراوی</div>
-    <div class="session-teacher">دکتر اسلامی</div>
-    <button class="nav-button" onclick="window.location.href='12.html'">جلسه ۱۲</button>
-  </div>
-
-</body>
+        <footer>
+            <p style="text-align: center; font-size: 0.9em; color: #777;">تهیه شده توسط مهدی رضایی - <a target="_blank" href="https://callmemahdi01.github.io/about">درباره</a></p>
+            <p>پایان فهرست جلسات. موفق باشید!</p>
+        </footer>
+    </div>
+    </body>
 </html>
