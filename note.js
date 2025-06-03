@@ -969,7 +969,7 @@ style.textContent = `
 }
 #scroll-percent {
     position: fixed;
-    top: 1px;
+    bottom: 1px;
     left: 1px;
     background-color: rgba(0,0,0,0.6);
     color: white;
