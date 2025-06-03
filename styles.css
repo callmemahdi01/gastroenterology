@@ -309,65 +309,62 @@ footer {
     color: #6c757d; /* Grey text for footer */
 }
 
-/* --- Mobile Optimizations --- */
-@media (max-width: 768px) {
-    body{
-        font-size: 1rem;
-    }
+@media (max-width: 480px) {
     .container {
         width: 95%;
-        padding: 25px 15px; /* Adjusted padding */
-        margin: 15px auto;
+        padding: 15px 10px;
+        margin: 0px 0;
+        border-radius: 0; /* Full width, no radius on very small screens */
+        box-shadow: none;
     }
-
+    header {
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+    }
     header h1 {
-        font-size: 2.2em; /* Adjusted */
-    }
-    header p {
-        font-size: 1.1em; /* Adjusted */
-    }
-
-    .disease-block {
-        padding: 20px;
-    }
-    .disease-block h2 {
-        font-size: 1.7em;
-    }
-    .disease-block h3 {
-        font-size: 1.45em;
-    }
-    h2 { /* General H2 if used outside cards */
         font-size: 1.8em;
     }
-     h3 { /* General H3 if used outside cards */
+    header p {
+        font-size: 1em;
+    }
+    h2 {
         font-size: 1.5em;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+    h3 { /* General h3 */
+        font-size: 1.3em;
+        margin-top: 25px;
+        margin-bottom: 15px;
+    }
+    .disease-block h3 { /* h3 inside disease-block */
+        font-size: 1.25em;
     }
     h4 {
-        font-size: 1.3em; /* Adjusted */
+        font-size: 1.15em;
+        margin-top: 20px;
+        margin-bottom: 10px;
     }
     p, li {
-        font-size: 1em;
-        line-height: 1.75;
+        font-size: 0.95em;
+        line-height: 1.7;
     }
-    ul, ol {
-        padding-right: 20px;
-    }
-
     .nav-button {
-        padding: 10px 15px;
-        font-size: 0.95em;
+        font-size: 0.9em;
+        padding: 9px 12px;
+        margin: 3px 4px;
     }
-
-    .note, .definition, .important-questions, .pep-guideline, .references {
-        padding: 15px;
-        margin: 20px 0;
-    }
-
-    table {
-        font-size: 0.95em;
+    .note, .definition, .important-questions, .pep-guideline, .references, .disease-block {
+        padding: 12px;
+        margin: 15px 0;
     }
     th, td {
-        padding: 10px 8px;
+        padding: 8px 5px;
+        font-size: 0.9em;
+    }
+    .references li {
+        font-size: 0.9em;
+        padding: 8px;
     }
 }
 
