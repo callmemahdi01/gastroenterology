@@ -204,14 +204,3 @@ body.annotation-active {
 .custom-modal-button-alert:hover {
     background-color: #3182CE; /* Tailwind blue-600 */
 }
-
-
-iframe {
-    overflow: hidden;
-    scrollbar-width: none; /* برای فایرفاکس */
-    -ms-overflow-style: none; /* برای IE */
-}
-
-iframe::-webkit-scrollbar {
-    display: none; /* برای کروم و سافاری */
-}

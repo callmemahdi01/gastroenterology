@@ -343,3 +343,13 @@ footer {
     z-index: 9999;
     transition: width 0.1s linear;
   }
+
+  iframe {
+    overflow: hidden;
+    scrollbar-width: none; /* برای فایرفاکس */
+    -ms-overflow-style: none; /* برای IE */
+}
+
+iframe::-webkit-scrollbar {
+    display: none; /* برای کروم و سافاری */
+}
