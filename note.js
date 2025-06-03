@@ -933,3 +933,60 @@ const googleFont = document.createElement("link");
 googleFont.rel = "stylesheet";
 googleFont.href = "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200";
 document.head.appendChild(googleFont);
+
+
+
+
+
+
+
+
+
+// ایجاد div مربوط به نوار اسکرول
+const progressBar = document.createElement('div');
+progressBar.id = 'scroll-progress-bar';
+document.body.appendChild(progressBar);
+
+// ایجاد div مربوط به درصد اسکرول
+const percentText = document.createElement('div');
+percentText.id = 'scroll-percent';
+percentText.textContent = '0%';
+document.body.appendChild(percentText);
+
+// افزودن استایل لازم با جاوااسکریپت
+const style = document.createElement('style');
+style.textContent = `
+#scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background-color: #4caf50;
+    width: 0%;
+    z-index: 9999;
+    transition: width 0.25s ease-out;
+}
+#scroll-percent {
+    position: fixed;
+    top: 8px;
+    left: 50px;
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    z-index: 10000;
+    font-family: sans-serif;
+}
+`;
+document.head.appendChild(style);
+
+// کنترل اسکرول برای آپدیت درصد و عرض نوار
+window.addEventListener("scroll", function () {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollPercent = Math.round((scrollTop / docHeight) * 100);
+
+    progressBar.style.width = scrollPercent + "%";
+    percentText.textContent = scrollPercent + "%";
+});
