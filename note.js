@@ -963,17 +963,18 @@ style.textContent = `
     height: 2px;
     background-color: #4caf50;
     width: 0%;
-    border-radius: 2px;
     z-index: 9999;
     transition: width 0.25s ease-out;
 }
 #scroll-percent {
     position: fixed;
-    bottom: 1px;
-    left: 1px;
-    background-color: rgba(0,0,0,0.6);
+    top: 1px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0,0,0,0.5);
+    box-shadow: inset 0px 0px 3px 1px white;;
     color: white;
-    padding: 1px 2px;
+    padding: 0px 2px;
     border-radius: 2px;
     font-size: 0.7em;
     z-index: 10000;
