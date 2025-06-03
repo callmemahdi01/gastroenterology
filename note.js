@@ -978,7 +978,6 @@ style.textContent = `
     font-size: 0.7em;
     z-index: 10000;
     font-family: sans-serif;
-    transition: width 0.25s ease-out;
 }
 `;
 document.head.appendChild(style);
