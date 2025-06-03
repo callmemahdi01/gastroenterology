@@ -933,18 +933,3 @@ const googleFont = document.createElement("link");
 googleFont.rel = "stylesheet";
 googleFont.href = "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200";
 document.head.appendChild(googleFont);
-
-  function updateScrollProgress() {
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrollPercent = (scrollTop / scrollHeight) * 100;
-    
-    const progressBar = document.getElementById('scroll-progress-bar');
-    const percentText = document.getElementById('scroll-percent');
-    
-    progressBar.style.width = scrollPercent + '%';
-    percentText.textContent = Math.round(scrollPercent) + '%';
-  }
-
-  window.addEventListener('scroll', updateScrollProgress);
-  window.addEventListener('load', updateScrollProgress);
