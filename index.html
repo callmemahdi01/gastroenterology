@@ -1,171 +1,494 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فهرست جلسات جزوه فیزیوپاتولوژی گوارش</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* استایل‌های اضافی برای صفحه فهرست */
-        .session-list-container {
-            padding: 20px 0;
-        }
-        .session-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .session-list li {
-            background-color: #f8f9fa; /* یک پس‌زمینه خنثی برای هر آیتم */
-            margin-bottom: 15px;
-            border-radius: 8px;
-            border: 1px solid #dee2e6;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            overflow: hidden; /* برای اطمینان از اینکه محتوای داخلی از گوشه‌های گرد بیرون نزند */
-        }
-        .session-list li:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-        }
-        .session-list a {
-            text-decoration: none;
-            color: #34495e; /* رنگ متن اصلی برای عنوان جلسه */
-            display: flex; /* استفاده از فلکس برای چینش بهتر */
-            align-items: center; /* تراز عمودی آیتم‌ها در مرکز */
-            padding: 25px 20px; /* پدینگ داخلی بیشتر */
-            transition: background-color 0.2s ease;
-        }
-        .session-list a:hover {
-            background-color: #e9ecef; /* تغییر رنگ پس‌زمینه لینک هنگام هاور */
-        }
-        .session-number-badge {
-            background-color: #4CAF50; /* رنگ سبز اصلی از استایل‌های قبلی */
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px; /* گرد کردن کامل برای حالت بیضی/دایره */
-            font-size: 1em;
-            font-weight: 600;
-            margin-left: 20px; /* فاصله از متن عنوان */
-            min-width: 40px; /* حداقل عرض برای اعداد تک رقمی */
-            text-align: center;
-        }
-        .session-title-text {
-            font-size: 1.3em; /* اندازه فونت عنوان جلسه */
-            font-weight: 600;
-            color: #2c3e50; /* رنگ تیره‌تر برای عنوان */
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>فهرست جلسات جزوه فیزیوپاتولوژی گوارش</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    body {
+      font-family: sans-serif;
+      direction: rtl;
+      margin: 0;
+      padding: 0;
+      background-color: #fafafa;
+    }
+    .container {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    header h1 {
+      font-size: 2.2em;
+      text-align: center;
+      color: #2c3e50;
+    }
+    .session-list-container {
+      padding: 30px 0;
+    }
+    .session-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    .session-list li {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      position: relative;
+    }
+    .session-list li::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+      backdrop-filter: blur(10px);
+      transition: opacity 0.3s ease;
+      opacity: 0;
+    }
+    .session-list li:hover::before {
+      opacity: 1;
+    }
+    .session-list li:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+    .session-list li:nth-child(odd) {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+    }
+    .session-list li:nth-child(3n) {
+      background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+    }
+    .session-list li:nth-child(4n) {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+    .session-list li:nth-child(5n) {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+    .session-list a {
+      text-decoration: none;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 25px 20px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+    }
+    .session-list a:hover {
+      transform: translateX(5px);
+    }
+    .session-number-badge {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 25px;
+      font-size: 0.9em;
+      font-weight: 700;
+      margin-left: 20px;
+      min-width: 50px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    .session-title-text {
+      font-size: 1.2em;
+      font-weight: 600;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      flex: 1;
+    }
+    .session-icon {
+      margin-right: 15px;
+      font-size: 24px;
+      opacity: 0.8;
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+      .session-list {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      .session-list a {
+        padding: 20px 15px;
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+      }
+      .session-number-badge {
+        margin-left: 0;
+        margin-bottom: 10px;
+        min-width: 60px;
+      }
+      .session-title-text {
+        font-size: 1.1em;
+        line-height: 1.4;
+      }
+      header h1 {
+        font-size: 1.8em;
+      }
+      .session-icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .container {
+        padding: 10px;
+      }
+      .session-list a {
+        padding: 18px 12px;
+      }
+      .session-title-text {
+        font-size: 1em;
+      }
+      header h1 {
+        font-size: 1.6em;
+      }
+    }
+    .iframe-container {
+      position: relative;
+      margin-top: 30px;
+    }
+    iframe {
+      width: 100%;
+      height: 80vh;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: white;
+    }
+    .fullscreen-btn {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    .fullscreen-btn:hover {
+      background-color: rgba(0, 0, 0, 0.9);
+      transform: scale(1.1);
+    }
+    .fullscreen-btn .material-icons {
+      font-size: 24px;
+    }
+    .fullscreen-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.95);
+      z-index: 1000;
+    }
+    .fullscreen-content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .fullscreen-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .close-fullscreen-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #333;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    .close-fullscreen-btn:hover {
+      background-color: white;
+      transform: scale(1.1);
+    }
+    .close-fullscreen-btn .material-icons {
+      font-size: 24px;
+    }
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #777;
+    }
 
-        /* استایل برای هدر و فوتر صفحه ایندکس */
-        header h1 {
-            font-size: 2.4em; /* کمی کوچکتر از هدر اصلی جلسات */
-        }
-        .container > h2 { /* استایل برای H2 مستقیما داخل کانتینر اگر استفاده شود */
-            color: #16a085;
-            text-align: center;
-            margin-top: 30px;
-            margin-bottom: 25px;
-            font-size: 1.8em;
-            border-bottom: 1px solid #e0e0e0;
-            padding-bottom: 10px;
-        }
-    </style>
+    /* Loading indicator */
+    .loading-indicator {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      z-index: 5;
+    }
+    
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>فهرست جلسات جزوه فیزیوپاتولوژی گوارش</h1>
-            <p style="text-align: center; font-size: 0.9em; color: #777;">تهیه شده توسط مهدی رضایی - <a target="_blank" href="https://callmemahdi01.github.io/about">درباره</a></p>
-        </header>
+  <div class="container">
+    <header>
+      <h1>فهرست جلسات جزوه فیزیوپاتولوژی گوارش</h1>
+      <p style="text-align: center; font-size: 0.9em; color: #777;">
+        تهیه شده توسط مهدی رضایی -
+        <a target="_blank" href="https://callmemahdi01.github.io/about">درباره</a>
+      </p>
+    </header>
 
-        <section id="table-of-contents" class="session-list-container">
-            <h2>لیست جلسات</h2>
-            <ul class="session-list">
-                <li>
-                    <a href="1.html">
-                        <span class="session-number-badge">جلسه ۱</span>
-                        <span class="session-title-text">بیماری‌های متابولیک کبد (هموکروماتوزیس و ویلسون)</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="2.html">
-                        <span class="session-number-badge">جلسه ۲</span>
-                        <span class="session-title-text">هپاتیت‌های دارویی و بیماری کبد چرب غیرالکلی</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="3.html">
-                        <span class="session-number-badge">جلسه ۳</span>
-                        <span class="session-title-text">بیماری‌های پانکراس (حاد، مزمن و سرطان)</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="4.html">
-                        <span class="session-number-badge">جلسه ۴</span>
-                        <span class="session-title-text">بیماری‌های معده و دئودنوم</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="5.html">
-                        <span class="session-number-badge">جلسه ۵</span>
-                        <span class="session-title-text">بیماری‌های مری</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="6.html">
-                        <span class="session-number-badge">جلسه ۶</span>
-                        <span class="session-title-text">سرطان کبد</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="7.html">
-                        <span class="session-number-badge">جلسه ۷</span>
-                        <span class="session-title-text">بیماری التهابی روده (IBD)</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="8.html">
-                        <span class="session-number-badge">جلسه ۸</span>
-                        <span class="session-title-text">هپاتیت‌های حاد و مزمن ویروسی</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="9.html">
-                        <span class="session-number-badge">جلسه ۹</span>
-                        <span class="session-title-text">سوءجذب</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="10.html">
-                        <span class="session-number-badge">جلسه ۱۰</span>
-                        <span class="session-title-text">سمیولوژی و علائم بالینی در بیماری‌های گوارشی</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="11.html">
-                        <span class="session-number-badge">جلسه ۱۱</span>
-                        <span class="session-title-text">تست‌های بیوشیمیایی کبد و رویکرد تشخیصی</span>
-                    </a>
-                </li>
-                <li>
-                    <a onclick="alert('در حال نوشتن جزوه ...')">
-                        <span class="session-number-badge">جلسه 12</span>
-                        <span class="session-title-text">سیروز کبدی</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="13.html">
-                        <span class="session-number-badge">جلسه ۱۳</span>
-                        <span class="session-title-text">بیماری‌های سیستم صفراوی</span>
-                    </a>
-                </li>
-            </ul>
-        </section>
+    <section class="session-list-container">
+      <h2 style="text-align: center; color: #16a085;">لیست جلسات</h2>
+      <ul class="session-list">
+        <li><a onclick="loadSession('1.html')"><span class="material-icons session-icon">biotech</span><span class="session-number-badge">جلسه ۱</span><span class="session-title-text">بیماری‌های متابولیک کبد</span></a></li>
+        <li><a onclick="loadSession('2.html')"><span class="material-icons session-icon">medication</span><span class="session-number-badge">جلسه ۲</span><span class="session-title-text">هپاتیت دارویی و کبد چرب</span></a></li>
+        <li><a onclick="loadSession('3.html')"><span class="material-icons session-icon">anatomy</span><span class="session-number-badge">جلسه ۳</span><span class="session-title-text">بیماری‌های پانکراس</span></a></li>
+        <li><a onclick="loadSession('4.html')"><span class="material-icons session-icon">restaurant</span><span class="session-number-badge">جلسه ۴</span><span class="session-title-text">بیماری‌های معده و دئودنوم</span></a></li>
+        <li><a onclick="loadSession('5.html')"><span class="material-icons session-icon">healing</span><span class="session-number-badge">جلسه ۵</span><span class="session-title-text">بیماری‌های مری</span></a></li>
+        <li><a onclick="loadSession('6.html')"><span class="material-icons session-icon">coronavirus</span><span class="session-number-badge">جلسه ۶</span><span class="session-title-text">سرطان کبد</span></a></li>
+        <li><a onclick="loadSession('7.html')"><span class="material-icons session-icon">local_hospital</span><span class="session-number-badge">جلسه ۷</span><span class="session-title-text">بیماری التهابی روده</span></a></li>
+        <li><a onclick="loadSession('8.html')"><span class="material-icons session-icon">bug_report</span><span class="session-number-badge">جلسه ۸</span><span class="session-title-text">هپاتیت ویروسی</span></a></li>
+        <li><a onclick="loadSession('9.html')"><span class="material-icons session-icon">psychology</span><span class="session-number-badge">جلسه ۹</span><span class="session-title-text">سوءجذب</span></a></li>
+        <li><a onclick="loadSession('10.html')"><span class="material-icons session-icon">monitor_heart</span><span class="session-number-badge">جلسه ۱۰</span><span class="session-title-text">علائم بالینی گوارش</span></a></li>
+        <li><a onclick="loadSession('11.html')"><span class="material-icons session-icon">science</span><span class="session-number-badge">جلسه ۱۱</span><span class="session-title-text">تست‌های کبدی</span></a></li>
+        <li><a onclick="alert('در حال نوشتن جزوه ...')"><span class="material-icons session-icon">pending</span><span class="session-number-badge">جلسه ۱۲</span><span class="session-title-text">سیروز کبدی</span></a></li>
+        <li><a onclick="loadSession('13.html')"><span class="material-icons session-icon">water_drop</span><span class="session-number-badge">جلسه ۱۳</span><span class="session-title-text">سیستم صفراوی</span></a></li>
+      </ul>
+    </section>
 
-        <footer>
-            <p style="text-align: center; font-size: 0.9em; color: #777;">تهیه شده توسط مهدی رضایی - <a target="_blank" href="https://callmemahdi01.github.io/about">درباره</a></p>
-            <p>پایان فهرست جلسات. موفق باشید!</p>
-        </footer>
+    <div>
+      <h2 style="text-align: center;">نمایش جزوه</h2>
+      <div class="iframe-container">
+        <button class="fullscreen-btn" onclick="openFullscreen()" title="نمایش تمام صفحه">
+          <span class="material-icons">fullscreen</span>
+        </button>
+        <div class="loading-indicator" id="loading-indicator">
+          <div class="spinner"></div>
+        </div>
+        <iframe id="session-frame" src="" onload="hideLoadingIndicator()" onerror="hideLoadingIndicator()"></iframe>
+      </div>
     </div>
-    </body>
+
+    <footer>
+      <p>تهیه شده توسط مهدی رضایی -
+        <a target="_blank" href="https://callmemahdi01.github.io/about">درباره</a>
+      </p>
+      <p>پایان فهرست جلسات. موفق باشید!</p>
+    </footer>
+  </div>
+
+  <!-- Fullscreen Overlay -->
+  <div id="fullscreen-overlay" class="fullscreen-overlay">
+    <div class="fullscreen-content">
+      <button class="close-fullscreen-btn" onclick="closeFullscreen()" title="خروج از تمام صفحه">
+        <span class="material-icons">close</span>
+      </button>
+      <iframe id="fullscreen-iframe" class="fullscreen-iframe" src=""></iframe>
+    </div>
+  </div>
+
+  <script>
+    // Error handling for scroll progress function
+    function safeUpdateScrollProgress() {
+      try {
+        const progressElement = document.getElementById('scroll-progress');
+        if (progressElement && progressElement.style) {
+          // Your scroll progress logic here
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          const progress = (scrollTop / scrollHeight) * 100;
+          progressElement.style.width = progress + '%';
+        }
+      } catch (error) {
+        console.warn('Scroll progress update failed:', error);
+      }
+    }
+
+    function showLoadingIndicator() {
+      const loadingIndicator = document.getElementById('loading-indicator');
+      if (loadingIndicator) {
+        loadingIndicator.style.display = 'block';
+      }
+    }
+
+    function hideLoadingIndicator() {
+      const loadingIndicator = document.getElementById('loading-indicator');
+      if (loadingIndicator) {
+        loadingIndicator.style.display = 'none';
+      }
+    }
+
+    function loadSession(filename) {
+      try {
+        const iframe = document.getElementById('session-frame');
+        const fullscreenIframe = document.getElementById('fullscreen-iframe');
+        
+        if (!iframe || !fullscreenIframe) {
+          console.error('Iframe elements not found');
+          return;
+        }
+
+        const url = `https://callmemahdi01.github.io/gastroenterology/${filename}`;
+        
+        // Show loading indicator
+        showLoadingIndicator();
+        
+        iframe.src = url;
+        fullscreenIframe.src = url;
+        
+        // Scroll to iframe section with error handling
+        setTimeout(() => {
+          try {
+            const iframeContainer = iframe.closest('.iframe-container');
+            if (iframeContainer) {
+              window.scrollTo({
+                top: iframeContainer.offsetTop - 20,
+                behavior: 'smooth'
+              });
+            }
+          } catch (scrollError) {
+            console.warn('Smooth scroll failed:', scrollError);
+            // Fallback to immediate scroll
+            const iframeContainer = iframe.closest('.iframe-container');
+            if (iframeContainer) {
+              window.scrollTo(0, iframeContainer.offsetTop - 20);
+            }
+          }
+        }, 100);
+        
+      } catch (error) {
+        console.error('Failed to load session:', error);
+        hideLoadingIndicator();
+        alert('خطا در بارگذاری جلسه. لطفاً دوباره تلاش کنید.');
+      }
+    }
+
+    function openFullscreen() {
+      try {
+        const iframe = document.getElementById('session-frame');
+        const fullscreenOverlay = document.getElementById('fullscreen-overlay');
+        const fullscreenIframe = document.getElementById('fullscreen-iframe');
+        
+        if (!iframe || !fullscreenOverlay || !fullscreenIframe) {
+          console.error('Required elements for fullscreen not found');
+          return;
+        }
+        
+        if (iframe.src) {
+          fullscreenIframe.src = iframe.src;
+          fullscreenOverlay.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        } else {
+          alert('لطفاً ابتدا یکی از جلسات را انتخاب کنید.');
+        }
+      } catch (error) {
+        console.error('Failed to open fullscreen:', error);
+      }
+    }
+
+    function closeFullscreen() {
+      try {
+        const fullscreenOverlay = document.getElementById('fullscreen-overlay');
+        if (fullscreenOverlay) {
+          fullscreenOverlay.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+      } catch (error) {
+        console.error('Failed to close fullscreen:', error);
+      }
+    }
+
+    // Event listeners with error handling
+    document.addEventListener('DOMContentLoaded', function() {
+      try {
+        // Initialize any required elements
+        console.log('Page loaded successfully');
+        
+        // Override the problematic updateScrollProgress function if it exists
+        if (typeof window.updateScrollProgress === 'function') {
+          window.updateScrollProgress = safeUpdateScrollProgress;
+        }
+        
+      } catch (error) {
+        console.error('Initialization error:', error);
+      }
+    });
+
+    // Close fullscreen with ESC key
+    document.addEventListener('keydown', function(event) {
+      try {
+        if (event.key === 'Escape') {
+          closeFullscreen();
+        }
+      } catch (error) {
+        console.error('Keyboard event error:', error);
+      }
+    });
+
+    // Add scroll event listener with error handling
+    window.addEventListener('scroll', function() {
+      safeUpdateScrollProgress();
+    });
+
+    // Global error handler to catch unhandled errors
+    window.addEventListener('error', function(event) {
+      console.warn('Global error caught:', event.error);
+      // Don't show alert for every error, just log it
+      return true; // Prevent default error handling
+    });
+
+    // Handle unhandled promise rejections
+    window.addEventListener('unhandledrejection', function(event) {
+      console.warn('Unhandled promise rejection:', event.reason);
+      event.preventDefault(); // Prevent default handling
+    });
+  </script>
+</body>
 </html>
