@@ -371,68 +371,6 @@ footer {
     }
 }
 
-@media (max-width: 480px) {
-    .container {
-        width: 100%; /* Full width on small screens */
-        padding: 20px 10px; /* Adjusted padding */
-        margin: 0;
-        border-radius: 0;
-        box-shadow: none;
-    }
-    header {
-        margin-bottom: 25px;
-        padding-bottom: 15px;
-    }
-    header h1 {
-        font-size: 1.9em; /* Adjusted */
-    }
-    header p {
-        font-size: 1em;
-    }
-
-    .disease-block {
-        padding: 15px;
-        margin-bottom: 20px;
-    }
-    .disease-block h2 {
-        font-size: 1.6em; /* Adjusted */
-    }
-    .disease-block h3 {
-        font-size: 1.35em; /* Adjusted */
-    }
-     h2 { /* General H2 if used outside cards */
-        font-size: 1.6em;
-    }
-     h3 { /* General H3 if used outside cards */
-        font-size: 1.4em;
-    }
-    h4 {
-        font-size: 1.2em; /* Adjusted */
-    }
-    p, li {
-        font-size: 0.95em;
-        line-height: 1.7;
-    }
-    .nav-button {
-        font-size: 0.9em;
-        padding: 9px 12px;
-        margin: 3px 4px;
-    }
-    .note, .definition, .important-questions, .pep-guideline, .references {
-        padding: 12px;
-        margin: 15px 0;
-    }
-    th, td {
-        padding: 8px 6px; /* Adjusted */
-        font-size: 0.9em;
-    }
-    .references li {
-        font-size: 0.9em;
-        padding: 8px;
-    }
-}
-
-
   /* نوار اسکرول سبز */
   #scroll-progress-bar {
     position: fixed;
