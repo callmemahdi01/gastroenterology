@@ -1,12 +1,12 @@
-/* styles.css */
+/* style.css */
 
 @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
 
 @media print {
     body {
-        display: none !important;
+      display: none !important;
     }
-}
+  }
 
 /* --- General Body and Layout --- */
 body {
@@ -15,9 +15,6 @@ body {
     background-color: #f4f7f6; /* Slightly softer than pure f9f9f9 */
     color: #333;
     direction: rtl;
-    margin: 0; /* Added to ensure no default browser margins interfere */
-    padding: 0; /* Added for consistency */
-    font-size: 0.9rem;
 }
 
 .container {
@@ -30,7 +27,7 @@ body {
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
 }
 
-/* --- Navigation (Included from your CSS, can be used for future navigation elements) --- */
+/* --- Navigation --- */
 .nav-container {
     text-align: center;
     padding: 10px 0; /* Padding added to nav-container itself */
@@ -89,7 +86,7 @@ h2 {
     color: #16a085; /* Teal shade */
     border-bottom: 1px solid #e0e0e0;
     padding-bottom: 12px;
-    margin-top: 25px; /* Adjusted from 45px for better flow within cards */
+    margin-top: 45px;
     margin-bottom: 25px;
     font-size: 2em;
     font-weight: 600;
@@ -97,7 +94,7 @@ h2 {
 
 h3 {
     color: #2980b9; /* Primary blue */
-    margin-top: 30px; /* Adjusted from 35px */
+    margin-top: 35px;
     margin-bottom: 20px;
     font-size: 1.7em;
     font-weight: 600;
@@ -105,7 +102,7 @@ h3 {
 
 h4 {
     color: #34495e; /* Dark grey-blue for sub-subheadings */
-    margin-top: 25px; /* Adjusted from 30px */
+    margin-top: 30px;
     margin-bottom: 15px;
     font-size: 1.4em;
     font-weight: 600;
@@ -127,22 +124,20 @@ li {
     margin-bottom: 0.6em; /* Spacing between list items */
 }
 
-strong { /* General strong emphasis */
+strong {
     color: #c0392b; /* A distinct red for emphasis, use sparingly */
     font-weight: 600;
 }
 
-mark, .highlight { /* For inline text highlighting - unified 'mark' and '.highlight' */
-    background-color: #f9e79f; /* yellow highlight */
-    color: #333;
-    padding: 0.2em 0.4em;
+.highlight { /* For inline text highlighting */
+    background-color: #f9e79f;
+    padding: 0.1em 0.3em;
     border-radius: 3px;
     font-weight: 500;
 }
 
-
 /* --- Special Blocks --- */
-.note, .definition, .important-questions, .pep-guideline, .references, .custom-box {
+.note, .definition, .important-questions, .pep-guideline, .references {
     padding: 20px;
     margin: 25px 0;
     border-radius: 8px;
@@ -155,34 +150,25 @@ mark, .highlight { /* For inline text highlighting - unified 'mark' and '.highli
     background-color: #e8f6f3; /* Light teal background */
     border-right-color: #1abc9c; /* Teal border */
 }
-.note strong { /* Example of specific strong styling within a block if needed */
-    color: #117a65;
-}
 
 .definition {
     background-color: #fef9e7; /* Light yellow background */
     border-right-color: #f39c12; /* Orange border */
 }
-.definition strong {
-    color: #d35400;
-}
 
-.important-questions { /* Renamed for broader use, or you can keep specific names */
-    background-color: #fdedec; /* Light red background (was #fff0f0) */
+.important-questions {
+    background-color: #fff0f0; /* Light red background */
     border-right-color: #e74c3c; /* Red border */
 }
-.important-questions p:first-child, .important-questions strong {
+.important-questions p:first-child { /* If the first child is a bold paragraph */
     font-weight: bold;
-    color: #c0392b; /* Red color for emphasis */
-}
-.important-questions p:first-child {
     margin-bottom: 10px;
+    color: #c0392b;
 }
-
 
 .pep-guideline { /* Example from Rabies, can be generalized if needed */
-    background-color: #fdedec; /* Similar to important questions, adjust if needed */
-    border-right-color: #e74c3c; /* Reddish border */
+    background-color: #fdedec;
+    border-right-color: #fadbd8;
     border: 1px solid #fadbd8; /* Adding full border for this one */
     border-right-width: 5px; /* Keep the right border prominent */
 }
@@ -204,46 +190,34 @@ mark, .highlight { /* For inline text highlighting - unified 'mark' and '.highli
 }
 
 
-/* --- Disease Blocks (Card Style) --- */
+/* --- Alternating Disease Blocks (from 1st lecture structure) --- */
 .disease-block {
-    padding: 30px; /* Increased padding for better spacing inside cards */
+    padding: 25px;
     margin-bottom: 30px;
     border-radius: 8px;
     border: 1px solid #dee2e6;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.07); /* Slightly enhanced shadow */
-    background-color: #fff; /* Default white background */
-}
-/* Alternating colors are optional and can be enabled if desired for multiple top-level disease blocks */
-/*
-.disease-block:nth-child(odd) {
-    background-color: #e9f7ff; /* Light blue tint * /
-}
-.disease-block:nth-child(even) {
-    background-color: #f0fff0; /* Light honeydew green tint, softer than #e6ffe6 * /
-}
-*/
-
-.disease-block h2 { /* H2 specific to disease blocks */
-    margin-top: 0; /* H2 is the title of the card, so no top margin */
-    color: #34495e; /* Darker, more prominent color for card titles */
-    font-size: 1.9em; /* Slightly adjusted */
-    border-bottom: 2px solid #4CAF50; /* Primary green accent for card titles */
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
 }
 .disease-block h3 { /* Specific styling for H3 inside these blocks */
-    margin-top: 25px;
-    color: #16a085; /* Teal, like general H2 for sub-sections within card */
-    font-size: 1.6em;
+    margin-top: 0;
+    color: #2c3e50; /* Consistent with main H1 color for importance */
+    font-size: 1.6em; /* Slightly smaller than general H3 */
     border-bottom: 1px dashed #bdc3c7;
     padding-bottom: 10px;
 }
-
+.disease-block:nth-child(odd) {
+    background-color: #e9f7ff; /* Light blue tint */
+}
+.disease-block:nth-child(even) {
+    background-color: #e6ffe6; /* Light green tint */
+}
 
 /* --- Tables --- */
 .table-responsive-wrapper { /* Wrap tables in this div for horizontal scroll on mobile */
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     margin-bottom: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid #ddd; /* Optional: border around the scrollable area */
     border-radius: 6px;
 }
 table {
@@ -267,46 +241,74 @@ tr:nth-child(even) {
     background-color: #f8f9fa; /* Very light grey for even rows */
 }
 tr:hover {
-    background-color: #eef7ee; /* Lighter green hover for table rows */
+    background-color: #e9ecef; /* Subtle hover for table rows */
 }
-
-/* Additional custom classes for specific elements if needed */
-.contributors-note {
-    text-align: center;
-    margin-bottom: 30px;
-    padding: 10px;
-    background-color: #f8f9fa;
-    border-radius: 6px;
-    font-size: 0.9em;
-    color: #555;
-    border: 1px solid #e0e0e0;
-}
-.contributors-note p {
-    margin-bottom: 0.3em;
-    font-size: 1em; /* Relative to parent */
-    color: #444;
-}
-.contributors-note strong {
-    color: #333; /* Less aggressive red for this context */
-}
-
-.italic-centered-note {
-    text-align: center;
-    font-style: italic;
-    color: #555555;
-    margin: 15px 0;
-    font-size: 0.95em;
-}
-
 
 /* --- Footer --- */
 footer {
     text-align: center;
     padding: 25px 0;
-    margin-top: 40px; /* Increased margin */
+    margin-top: 30px;
     border-top: 1px solid #e0e0e0;
     font-size: 0.9em;
     color: #6c757d; /* Grey text for footer */
+}
+
+/* --- Mobile Optimizations --- */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 20px 15px;
+        margin: 15px auto;
+    }
+
+    header h1 {
+        font-size: 2.1em;
+    }
+    header p {
+        font-size: 1.05em;
+    }
+
+    h2 {
+        font-size: 1.7em;
+        margin-top: 35px;
+    }
+    h3 { /* General h3 */
+        font-size: 1.45em;
+        margin-top: 30px;
+    }
+    .disease-block h3 { /* h3 inside disease-block */
+         font-size: 1.4em;
+    }
+    h4 {
+        font-size: 1.25em;
+        margin-top: 25px;
+    }
+    p, li {
+        font-size: 1em;
+        line-height: 1.75;
+    }
+    ul, ol {
+        padding-right: 20px;
+    }
+
+    .nav-button {
+        z-index: 1001;
+        padding: 10px 15px;
+        font-size: 0.95em;
+    }
+
+    .note, .definition, .important-questions, .pep-guideline, .references, .disease-block {
+        padding: 15px;
+        margin: 20px 0;
+    }
+
+    table {
+        font-size: 0.95em;
+    }
+    th, td {
+        padding: 10px 8px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -367,15 +369,3 @@ footer {
         padding: 8px;
     }
 }
-
-  /* نوار اسکرول سبز */
-  #scroll-progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    background-color: limegreen;
-    width: 0%;
-    z-index: 9999;
-    transition: width 0.1s linear;
-  }
