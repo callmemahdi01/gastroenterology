@@ -963,6 +963,7 @@ style.textContent = `
     height: 2px;
     background-color: #4caf50;
     width: 0%;
+    border-radius: 2px;
     z-index: 9999;
     transition: width 0.25s ease-out;
 }
