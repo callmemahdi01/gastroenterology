@@ -969,8 +969,7 @@ style.textContent = `
 #scroll-percent {
     position: fixed;
     top: 1px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 1px;
     background-color: rgba(0,0,0,0.6);
     color: white;
     padding: 1px 2px;
@@ -978,6 +977,7 @@ style.textContent = `
     font-size: 0.7em;
     z-index: 10000;
     font-family: sans-serif;
+    transition: width 0.25s ease-out;
 }
 `;
 document.head.appendChild(style);
