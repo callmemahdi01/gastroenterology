@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>فهرست جلسات جزوه فیزیوپاتولوژی گوارش</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* --- CSS Reset/Normalization Basics --- */
     html {
@@ -27,12 +28,12 @@
 
     .container {
       padding: 20px;
-      max-width: 800px; /* Slightly reduced max-width for a more compact feel */
+      max-width: 800px;
       margin: 20px auto;
     }
 
     header h1 {
-      font-size: 1.8em; /* Adjusted size */
+      font-size: 1.8em;
       text-align: center;
       color: #2c3e50;
       margin-bottom: 8px;
@@ -56,58 +57,57 @@
       text-align: center;
       color: #1abc9c;
       margin-bottom: 20px;
-      font-size: 1.5em; /* Adjusted size */
+      font-size: 1.5em;
     }
 
     .session-list {
       list-style: none;
       display: grid;
-      gap: 15px; /* Adjusted gap */
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Adjusted minmax */
+      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     }
 
     .session-list li {
-      background-color: #fff; /* Simple background */
-      border: 1px solid #e0e0e0; /* Subtle border */
-      border-radius: 8px; /* Simpler radius */
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Softer, simpler shadow */
+      background-color: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
       transition: box-shadow 0.2s ease-in-out;
       overflow: hidden;
     }
 
     .session-list li:hover {
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Slightly more pronounced shadow on hover */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
     
-    /* Simplified background variations - can be removed for even shorter code */
     .session-list li:nth-child(3n+1) { background-color: #e9f7ef; border-color: #d1f0e0; }
     .session-list li:nth-child(3n+2) { background-color: #eaf2f8; border-color: #d4e6f1; }
 
 
     .session-list a {
       text-decoration: none;
-      color: #333; /* Darker text for better readability on light backgrounds */
+      color: #333;
       display: flex;
       align-items: center;
-      padding: 15px; /* Adjusted padding */
+      padding: 15px;
       cursor: pointer;
     }
 
     .session-number-badge {
-      background-color: #1abc9c; /* Theme color for badge */
+      background-color: #1abc9c;
       color: white;
       padding: 6px 12px;
       border-radius: 15px;
       font-size: 0.75em;
       font-weight: 600;
       margin-left: 10px;
-      min-width: auto; /* Allow to size naturally */
+      min-width: auto;
       text-align: center;
       flex-shrink: 0;
     }
 
     .session-title-text {
-      font-size: 1em; /* Adjusted size */
+      font-size: 1em;
       font-weight: 500;
       flex: 1;
       min-width: 0;
@@ -120,7 +120,7 @@
       text-align: center;
       margin-bottom: 15px;
       margin-top: 30px;
-      font-size: 1.4em; /* Adjusted size */
+      font-size: 1.4em;
       color: #34495e;
     }
 
@@ -129,11 +129,12 @@
       background-color: #e9ecef;
       border-radius: 8px;
       overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Added a subtle shadow */
     }
 
     iframe {
       width: 100%;
-      height: 80vh; /* Adjusted height */
+      height: 80vh;
       border: none;
       display: block;
       background-color: white;
@@ -141,8 +142,8 @@
 
     .fullscreen-btn {
       position: absolute;
-      top: 10px; /* Adjusted position */
-      left: 10px; /* Adjusted position */
+      top: 10px;
+      left: 10px;
       background-color: rgba(0, 0, 0, 0.6);
       color: white;
       border: none;
@@ -158,7 +159,7 @@
       box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
     }
     .fullscreen-btn .material-icons {
-      font-size: 18px; /* Adjusted icon size */
+      font-size: 18px;
     }
     .fullscreen-btn:hover {
       background-color: rgba(0, 0, 0, 0.75);
@@ -173,9 +174,9 @@
     }
     .iframe-container:fullscreen .fullscreen-btn {
       position: fixed;
-      top: 15px; /* Adjusted position */
-      left: 15px; /* Adjusted position */
-      z-index: 2147483647;
+      top: 15px;
+      left: 15px;
+      z-index: 2147483647; /* Ensure it's above almost everything */
       background-color: rgba(255, 255, 255, 0.25);
       color: #000;
     }
@@ -184,11 +185,11 @@
      }
 
     footer {
-      margin-top: 30px; /* Adjusted margin */
+      margin-top: 30px;
       text-align: center;
-      font-size: 0.8em; /* Adjusted size */
+      font-size: 0.8em;
       color: #6c757d;
-      padding-bottom: 15px; /* Adjusted padding */
+      padding-bottom: 15px;
     }
     footer p {
         margin-bottom: 4px;
@@ -200,6 +201,36 @@
     footer a:hover {
         text-decoration: underline;
     }
+
+    /* Custom UI Message Box Styles */
+    .ui-message-box {
+      position: fixed;
+      bottom: -100px; /* Initially hidden */
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #333;
+      color: white;
+      padding: 12px 22px;
+      border-radius: 6px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+      z-index: 10000;
+      transition: bottom 0.4s ease-in-out, opacity 0.4s ease-in-out;
+      font-size: 0.9em;
+      text-align: center;
+      opacity: 0;
+      max-width: 90%;
+    }
+    .ui-message-box.show {
+      bottom: 20px; /* Slide in */
+      opacity: 1;
+    }
+    .ui-message-box.error {
+      background-color: #e74c3c; /* Red for errors */
+    }
+    .ui-message-box.info {
+      background-color: #3498db; /* Blue for info */
+    }
+
 
     /* --- Mobile Responsive --- */
     @media (max-width: 768px) {
@@ -261,6 +292,10 @@
         top: 10px;
         left: 10px;
       }
+      .ui-message-box {
+        padding: 10px 15px;
+        font-size: 0.85em;
+      }
     }
   </style>
 </head>
@@ -277,19 +312,19 @@
     <section class="session-list-container">
       <h2>لیست جلسات</h2>
       <ul class="session-list">
-        <li><a onclick="loadSession('1.html')"><span class="session-number-badge">جلسه ۱</span><span class="session-title-text">بیماری‌های متابولیک کبد</span></a></li>
-        <li><a onclick="loadSession('2.html')"><span class="session-number-badge">جلسه ۲</span><span class="session-title-text">هپاتیت دارویی و کبد چرب</span></a></li>
-        <li><a onclick="loadSession('3.html')"><span class="session-number-badge">جلسه ۳</span><span class="session-title-text">بیماری‌های پانکراس</span></a></li>
-        <li><a onclick="loadSession('4.html')"><span class="session-number-badge">جلسه ۴</span><span class="session-title-text">بیماری‌های معده و دئودنوم</span></a></li>
-        <li><a onclick="loadSession('5.html')"><span class="session-number-badge">جلسه ۵</span><span class="session-title-text">بیماری‌های مری</span></a></li>
-        <li><a onclick="loadSession('6.html')"><span class="session-number-badge">جلسه ۶</span><span class="session-title-text">سرطان کبد</span></a></li>
-        <li><a onclick="loadSession('7.html')"><span class="session-number-badge">جلسه ۷</span><span class="session-title-text">بیماری التهابی روده</span></a></li>
-        <li><a onclick="loadSession('8.html')"><span class="session-number-badge">جلسه ۸</span><span class="session-title-text">هپاتیت ویروسی</span></a></li>
-        <li><a onclick="loadSession('9.html')"><span class="session-number-badge">جلسه ۹</span><span class="session-title-text">سوءجذب</span></a></li>
-        <li><a onclick="loadSession('10.html')"><span class="session-number-badge">جلسه ۱۰</span><span class="session-title-text">علائم بالینی گوارش</span></a></li>
-        <li><a onclick="loadSession('11.html')"><span class="session-number-badge">جلسه ۱۱</span><span class="session-title-text">تست‌های کبدی</span></a></li>
-        <li><a onclick="alert('در حال نوشتن جزوه ...')"><span class="session-number-badge">جلسه ۱۲</span><span class="session-title-text">سیروز کبدی</span></a></li>
-        <li><a onclick="loadSession('13.html')"><span class="session-number-badge">جلسه ۱۳</span><span class="session-title-text">سیستم صفراوی</span></a></li>
+        <li><a onclick="loadSession('MS5odG1s')"><span class="session-number-badge">جلسه ۱</span><span class="session-title-text">بیماری‌های متابولیک کبد</span></a></li>
+        <li><a onclick="loadSession('Mi5odG1s')"><span class="session-number-badge">جلسه ۲</span><span class="session-title-text">هپاتیت دارویی و کبد چرب</span></a></li>
+        <li><a onclick="loadSession('My5odG1s')"><span class="session-number-badge">جلسه ۳</span><span class="session-title-text">بیماری‌های پانکراس</span></a></li>
+        <li><a onclick="loadSession('NC5odG1s')"><span class="session-number-badge">جلسه ۴</span><span class="session-title-text">بیماری‌های معده و دئودنوم</span></a></li>
+        <li><a onclick="loadSession('NS5odG1s')"><span class="session-number-badge">جلسه ۵</span><span class="session-title-text">بیماری‌های مری</span></a></li>
+        <li><a onclick="loadSession('Ni5odG1s')"><span class="session-number-badge">جلسه ۶</span><span class="session-title-text">سرطان کبد</span></a></li>
+        <li><a onclick="loadSession('Ny5odG1s')"><span class="session-number-badge">جلسه ۷</span><span class="session-title-text">بیماری التهابی روده</span></a></li>
+        <li><a onclick="loadSession('OC5odG1s')"><span class="session-number-badge">جلسه ۸</span><span class="session-title-text">هپاتیت ویروسی</span></a></li>
+        <li><a onclick="loadSession('OS5odG1s')"><span class="session-number-badge">جلسه ۹</span><span class="session-title-text">سوءجذب</span></a></li>
+        <li><a onclick="loadSession('MTAuaHRtbA==')"><span class="session-number-badge">جلسه ۱۰</span><span class="session-title-text">علائم بالینی گوارش</span></a></li>
+        <li><a onclick="loadSession('MTEuaHRtbA==')"><span class="session-number-badge">جلسه ۱۱</span><span class="session-title-text">تست‌های کبدی</span></a></li>
+        <li><a onclick="showUIMessage('در حال نوشتن جزوه ...', 'info')"><span class="session-number-badge">جلسه ۱۲</span><span class="session-title-text">سیروز کبدی</span></a></li>
+        <li><a onclick="loadSession('MTMuaHRtbA==')"><span class="session-number-badge">جلسه ۱۳</span><span class="session-title-text">سیستم صفراوی</span></a></li>
       </ul>
     </section>
 
@@ -311,31 +346,115 @@
     </footer>
   </div>
 
+  <div id="ui-message-box" class="ui-message-box">این یک پیام است</div>
+
   <script>
     const sessionFrame = document.getElementById('session-frame');
     const iframeContainer = document.getElementById('iframe-viewer-container');
     const fullscreenBtn = iframeContainer.querySelector('.fullscreen-btn');
     const fullscreenBtnIcon = fullscreenBtn.querySelector('.material-icons');
+    const uiMessageBox = document.getElementById('ui-message-box');
+    let messageTimeout;
+    const LAST_SESSION_KEY = 'lastLoadedGastroSession'; // Key for localStorage
 
-    function loadSession(filename) {
-      const url = `https://callmemahdi01.github.io/gastroenterology/${filename}`;
-      sessionFrame.src = url;
+    /**
+     * Displays a custom message to the user.
+     * @param {string} message The message text to display.
+     * @param {string} type The type of message ('default', 'error', 'info').
+     */
+    function showUIMessage(message, type = 'default') {
+      if (!uiMessageBox) {
+        console.error("Message box element (ui-message-box) not found!");
+        // Fallback to console if UI element is missing
+        if (type === 'error') console.error(message);
+        else if (type === 'info') console.info(message);
+        else console.log(message);
+        return;
+      }
+      uiMessageBox.textContent = message;
+      // Reset classes: remove previous types and 'show'
+      uiMessageBox.className = 'ui-message-box'; 
       
-      setTimeout(() => {
-        if (iframeContainer) {
-          window.scrollTo({
-            top: iframeContainer.offsetTop - 20,
-            behavior: 'smooth'
-          });
-        }
-      }, 150);
+      // Add current type and 'show'
+      if (type === 'error') {
+        uiMessageBox.classList.add('error');
+      } else if (type === 'info') {
+        uiMessageBox.classList.add('info');
+      }
+      uiMessageBox.classList.add('show');
+
+
+      clearTimeout(messageTimeout);
+      messageTimeout = setTimeout(() => {
+        uiMessageBox.classList.remove('show');
+      }, 3500); // Hide after 3.5 seconds
     }
 
+    /**
+     * Constructs the base URL for pamphlet files in a slightly obfuscated way.
+     * @returns {string} The base URL.
+     */
+    function getBaseUrl() {
+      // Obfuscated base URL parts
+      const p = String.fromCharCode;
+      const part1 = [104, 116, 116, 112, 115, 58, 47, 47].map(c => p(c)).join(''); // "https://"
+      const part2 = [99, 97, 108, 108, 109, 101, 109, 97, 104, 100, 105, 48, 49].map(c => p(c)).join(''); // "callmemahdi01"
+      const part3 = [103, 105, 116, 104, 117, 98].map(c => p(c)).join(''); // "github"
+      const part4 = [105, 111].map(c => p(c)).join(''); // "io"
+      const part5 = [103, 97, 115, 116, 114, 111, 101, 110, 116, 101, 114, 111, 108, 111, 103, 121].map(c => p(c)).join(''); // "gastroenterology"
+      
+      return `${part1}${part2}.${part3}.${part4}/${part5}/`;
+    }
+
+    /**
+     * Loads a session into the iframe and saves it to localStorage.
+     * @param {string} encodedFilename The Base64 encoded filename of the session.
+     * @param {boolean} [isAutoLoad=false] - Indicates if the load is automatic (e.g. on page init).
+     */
+    function loadSession(encodedFilename, isAutoLoad = false) {
+      let filename;
+      try {
+        filename = atob(encodedFilename); // Decode from Base64
+      } catch (e) {
+        console.error("Failed to decode filename:", encodedFilename, e);
+        showUIMessage('خطا در بارگذاری جلسه: فایل نامعتبر.', 'error');
+        return;
+      }
+      
+      const baseUrl = getBaseUrl();
+      const url = baseUrl + filename;
+      sessionFrame.src = url;
+      
+      // Save to localStorage
+      try {
+        localStorage.setItem(LAST_SESSION_KEY, encodedFilename);
+      } catch (e) {
+        console.warn("Could not save session to localStorage:", e);
+      }
+      
+      // Scroll to the iframe container after a short delay,
+      // but only if it's not an automatic load on page init (to avoid jarring scroll)
+      if (!isAutoLoad) {
+        setTimeout(() => {
+          if (iframeContainer) {
+            window.scrollTo({
+              top: iframeContainer.offsetTop - 20, // 20px offset from top
+              behavior: 'smooth'
+            });
+          }
+        }, 150);
+      }
+    }
+
+    /**
+     * Toggles fullscreen mode for the iframe container.
+     */
     function toggleFrameFullscreen() {
       const targetElement = iframeContainer;
 
-      if (!sessionFrame.src || sessionFrame.src === window.location.href) {
-        alert('لطفا ابتدا یک جلسه را برای نمایش انتخاب کنید.');
+      // Check if a session is loaded
+      if (!sessionFrame.src || sessionFrame.src === window.location.href || sessionFrame.getAttribute('src') === "") {
+        showUIMessage('لطفا ابتدا یک جلسه را برای نمایش انتخاب کنید.', 'info');
         return;
       }
 
@@ -347,33 +466,42 @@
       if (!isInFullscreen) {
         if (targetElement.requestFullscreen) {
           targetElement.requestFullscreen();
-        } else if (targetElement.mozRequestFullScreen) {
+        } else if (targetElement.mozRequestFullScreen) { /* Firefox */
           targetElement.mozRequestFullScreen();
-        } else if (targetElement.webkitRequestFullscreen) {
+        } else if (targetElement.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
           targetElement.webkitRequestFullscreen();
-        } else if (targetElement.msRequestFullscreen) {
+        } else if (targetElement.msRequestFullscreen) { /* IE/Edge */
           targetElement.msRequestFullscreen();
         }
       } else {
         if (document.exitFullscreen) {
           document.exitFullscreen();
-        } else if (document.mozCancelFullScreen) {
+        } else if (document.mozCancelFullScreen) { /* Firefox */
           document.mozCancelFullScreen();
-        } else if (document.webkitExitFullscreen) {
+        } else if (document.webkitExitFullscreen) { /* Chrome, Safari & Opera */
           document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) {
+        } else if (document.msExitFullscreen) { /* IE/Edge */
           document.msExitFullscreen();
         }
       }
     }
 
+    /**
+     * Updates the fullscreen button icon and title based on the current fullscreen state.
+     */
     function updateFullscreenButtonState() {
       const isInFullscreen = document.fullscreenElement ||
                              document.webkitFullscreenElement ||
                              document.mozFullScreenElement ||
                              document.msFullscreenElement;
       
-      if (isInFullscreen && (document.fullscreenElement === iframeContainer || document.webkitFullscreenElement === iframeContainer)) {
+      const isTargetInFullscreen = isInFullscreen && 
+                                   (document.fullscreenElement === iframeContainer || 
+                                    document.webkitFullscreenElement === iframeContainer ||
+                                    document.mozFullScreenElement === iframeContainer ||
+                                    document.msFullscreenElement === iframeContainer);
+
+      if (isTargetInFullscreen) {
         fullscreenBtnIcon.textContent = 'fullscreen_exit';
         fullscreenBtn.title = 'خروج از تمام صفحه';
       } else {
@@ -382,13 +510,30 @@
       }
     }
 
+    // Event listeners for fullscreen changes
     document.addEventListener('fullscreenchange', updateFullscreenButtonState);
     document.addEventListener('webkitfullscreenchange', updateFullscreenButtonState);
     document.addEventListener('mozfullscreenchange', updateFullscreenButtonState);
     document.addEventListener('MSFullscreenChange', updateFullscreenButtonState);
 
-    // Optional: Add a nice Persian font if not available system-wide
-    // <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    // Load last session or default to session 1 on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      let sessionToLoad = null;
+      try {
+        sessionToLoad = localStorage.getItem(LAST_SESSION_KEY);
+      } catch (e) {
+        console.warn("Could not read session from localStorage:", e);
+      }
+
+      if (sessionToLoad) {
+        loadSession(sessionToLoad, true); // true indicates auto load, no scroll
+      } else {
+        // Default to loading the first session if nothing is in localStorage
+        // The first session's encoded name is 'MS5odG1s' (1.html)
+        loadSession('MS5odG1s', true); // true indicates auto load, no scroll
+      }
+    });
+
   </script>
 </body>
 </html>
