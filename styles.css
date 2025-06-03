@@ -11,7 +11,6 @@
 /* --- General Body and Layout --- */
 body {
     font-family: 'Vazirmatn', sans-serif;
-    line-height: 1.8;
     background-color: #f4f7f6; /* Slightly softer than pure f9f9f9 */
     color: #333;
     direction: rtl;
@@ -277,38 +276,50 @@ footer {
 @media (max-width: 480px) {
     .container {
         width: 95%;
-        padding: 18px 12px;
-        margin: 0;
-        border-radius: 0;
+        padding: 25px 10px;
+        margin: 0px 0;
+        border-radius: 0; /* Full width, no radius on very small screens */
         box-shadow: none;
     }
-    header h1 {
-        font-size: 2em;
+    header {
+        margin-bottom: 25px;
+        padding-bottom: 15px;
     }
-    header p {
-        font-size: 1.1em;
-    }
+
+
     h2 {
-        font-size: 1.6em;
+
+        margin-top: 30px;
+        margin-bottom: 20px;
     }
-    h3 {
-        font-size: 1.4em;
+    h3 { /* General h3 */
+
+        margin-top: 25px;
+        margin-bottom: 15px;
     }
+    
     h4 {
-        font-size: 1.25em;
+
+        margin-top: 20px;
+        margin-bottom: 10px;
     }
-    p, li {
-        font-size: 1.05em; /* از 0.95 به 1.05 ارتقا یافت */
-        line-height: 1.8;
-    }
+
     .nav-button {
-        font-size: 1em; /* از 0.9 به 1.0 */
-        padding: 10px 14px;
-        margin: 5px 5px;
+
+        padding: 9px 12px;
+        margin: 3px 4px;
+    }
+    .note, .definition, .important-questions, .pep-guideline, .references, .disease-block {
+        padding: 12px;
+        margin: 15px 0;
     }
     th, td {
-        padding: 10px 7px;
-        font-size: 1em;
+        padding: 8px 5px;
+
+    }
+    .references li {
+
+        padding: 8px;
     }
 }
 
