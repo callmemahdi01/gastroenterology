@@ -968,13 +968,14 @@ style.textContent = `
 }
 #scroll-percent {
     position: fixed;
-    top: 8px;
-    left: 50px;
+    top: 1px;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: rgba(0,0,0,0.6);
     color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8em;
+    padding: 1px 2px;
+    border-radius: 2px;
+    font-size: 0.7em;
     z-index: 10000;
     font-family: sans-serif;
 }
