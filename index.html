@@ -13,307 +13,333 @@
     }
     *, *::before, *::after {
       box-sizing: inherit;
-      margin: 0; /* Basic reset for margins */
-      padding: 0; /* Basic reset for paddings */
+      margin: 0;
+      padding: 0;
     }
-    /* Optional: if you want to prevent horizontal scroll no matter what (better to fix the root cause) */
-    /*
-    body {
-      overflow-x: hidden;
-    }
-    */
 
     body {
-      font-family: sans-serif;
+      font-family: 'Vazirmatn', sans-serif; /* Suggesting a nice Persian font */
       direction: rtl;
-      /* margin: 0; padding: 0; removed due to reset above */
-      background-color: #fafafa;
-      line-height: 1.5; /* Add a base line-height for better readability */
+      background-color: #f8f9fa; /* Slightly lighter background */
+      line-height: 1.6;
+      color: #333;
     }
+
     .container {
       padding: 20px;
       max-width: 900px;
-      margin: 0 auto; /* Consistent margin auto */
+      margin: 20px auto; /* Added top/bottom margin */
     }
+
     header h1 {
-      font-size: 2.2em;
+      font-size: 2em; /* Slightly reduced */
       text-align: center;
       color: #2c3e50;
-      margin-bottom: 10px; /* Add some space below h1 */
-      overflow-wrap: break-word; /* Handle long words */
-      word-wrap: break-word;     /* Older browsers */
-      /* hyphens: auto; */      /* Optional, requires lang="fa" and browser support */
+      margin-bottom: 8px;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
     }
-    header p { /* Style for the paragraph under h1 */
+
+    header p {
       text-align: center;
-      font-size: 0.9em;
-      color: #777;
-      margin-bottom: 20px;
+      font-size: 0.85em; /* Slightly reduced */
+      color: #6c757d; /* Softer color */
+      margin-bottom: 25px;
     }
-    .session-list-container {
-      padding: 30px 0;
-    }
-    .session-list-container h2 { /* Style for "لیست جلسات" */
-        text-align: center;
+    header a {
         color: #16a085;
-        margin-bottom: 20px;
+        text-decoration: none;
     }
+    header a:hover {
+        text-decoration: underline;
+    }
+
+    .session-list-container {
+      padding: 20px 0; /* Reduced padding */
+    }
+
+    .session-list-container h2 {
+      text-align: center;
+      color: #1abc9c; /* Adjusted color */
+      margin-bottom: 20px;
+      font-size: 1.6em;
+    }
+
     .session-list {
       list-style: none;
-      /* padding: 0; margin: 0; removed due to reset */
       display: grid;
-      gap: 20px;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px; /* Reduced gap */
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax */
     }
+
     .session-list li {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 12px; /* Slightly smaller radius */
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Softer shadow */
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       overflow: hidden;
       position: relative;
     }
-    .session-list li::before {
+
+    /* Simplified and structured background colors */
+    .session-list li { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); } /* Default */
+    .session-list li:nth-child(4n-2) { background: linear-gradient(135deg, #ff8c42 0%, #ff6759 100%); } /* Orange/Red */
+    .session-list li:nth-child(4n-1) { background: linear-gradient(135deg, #45b649 0%, #3a9d3f 100%); } /* Green */
+    .session-list li:nth-child(4n) { background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); } /* Blue */
+
+
+    .session-list li::before { /* Optional: subtle glassy effect on hover */
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-      backdrop-filter: blur(10px);
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
       transition: opacity 0.3s ease;
       opacity: 0;
+      pointer-events: none; /* Allow clicks to pass through */
     }
+
     .session-list li:hover::before {
       opacity: 1;
     }
+
     .session-list li:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px) scale(1.015); /* More subtle hover */
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
     }
-    .session-list li:nth-child(odd) {
-      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
-    }
-    .session-list li:nth-child(3n) {
-      background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
-    }
-    .session-list li:nth-child(4n) {
-      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    }
-    .session-list li:nth-child(5n) {
-      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    }
+
     .session-list a {
       text-decoration: none;
       color: white;
       display: flex;
       align-items: center;
-      padding: 25px 20px;
-      transition: all 0.3s ease;
+      padding: 18px 15px; /* Reduced padding */
+      transition: transform 0.2s ease;
       cursor: pointer;
       position: relative;
       z-index: 2;
     }
+
     .session-list a:hover {
-      transform: translateX(5px);
+      transform: translateX(3px); /* Subtle shift */
     }
+
     .session-number-badge {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: rgba(255, 255, 255, 0.15);
       color: white;
-      padding: 12px 18px;
-      border-radius: 25px;
-      font-size: 0.9em;
-      font-weight: 700;
-      margin-left: 20px; /* Keep margin-left for LTR context (though RTL swaps it visually) */
-      min-width: 50px; /* Or use flex-shrink: 0 if it causes issues */
-      text-align: center;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      flex-shrink: 0; /* Prevent badge from shrinking too much */
-    }
-    .session-title-text {
-      font-size: 1.2em;
+      padding: 7px 14px; /* Reduced padding */
+      border-radius: 20px;
+      font-size: 0.8em; /* Reduced font size */
       font-weight: 600;
+      margin-left: 12px; /* Reduced margin */
+      min-width: 45px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      flex-shrink: 0;
+    }
+
+    .session-title-text {
+      font-size: 1.05em; /* Reduced font size */
+      font-weight: 500; /* Adjusted font weight */
       color: white;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      flex: 1; /* Allow title to take available space */
-      min-width: 0; /* Important for flex items to allow shrinking and wrapping */
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+      flex: 1;
+      min-width: 0;
       overflow-wrap: break-word;
       word-wrap: break-word;
-      /* hyphens: auto; */
     }
+
     .session-icon {
-      margin-right: 15px; /* Keep margin-right for LTR context */
-      font-size: 24px;
-      opacity: 0.8;
-      flex-shrink: 0; /* Prevent icon from shrinking */
+      margin-right: 10px; /* Reduced margin */
+      font-size: 22px; /* Slightly smaller icon */
+      opacity: 0.9;
+      flex-shrink: 0;
     }
     
     /* Iframe Section */
-    .iframe-section h2 { /* Style for "نمایش جزوه" */
-        text-align: center;
-        margin-bottom: 15px; /* Space before iframe container */
-        margin-top: 30px; /* Space from session list */
+    .iframe-section h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      margin-top: 30px;
+      font-size: 1.5em;
+      color: #34495e;
     }
+
     .iframe-container {
       position: relative;
-      /* margin-top: 30px; /* Moved to .iframe-section h2's margin-top or margin of a wrapper div */
+      background-color: #e9ecef; /* Light background for the container */
+      border-radius: 8px;
+      overflow: hidden; /* Ensures button stays within rounded corners if not fixed */
     }
+
     iframe {
       width: 100%;
-      height: 75vh; /* Slightly reduced height for more context on small screens */
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      background-color: white;
-      display: block; /* Removes potential bottom space under iframe */
+      height: 70vh; /* Adjusted height */
+      border: none; /* Removed border, container has one if needed */
+      display: block;
+      background-color: white; /* iframe background */
     }
+
     .fullscreen-btn {
       position: absolute;
-      top: 10px;
-      left: 10px; 
-      background-color: rgba(0, 0, 0, 0.8);
+      top: 12px;
+      left: 12px; 
+      background-color: rgba(0, 0, 0, 0.65);
       color: white;
       border: none;
       border-radius: 50%;
-      width: 44px; /* Slightly smaller for very small screens, easier to place */
-      height: 44px;
+      width: 40px; 
+      height: 40px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: background-color 0.3s ease, transform 0.2s ease;
       z-index: 10;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     }
     .fullscreen-btn .material-icons {
-      font-size: 22px; /* Adjusted for smaller button */
+      font-size: 20px;
     }
     .fullscreen-btn:hover {
-      background-color: rgba(0, 0, 0, 0.9);
-      transform: scale(1.1);
+      background-color: rgba(0, 0, 0, 0.8);
+      transform: scale(1.08);
     }
+
+    /* Styles for when the iframe container is in fullscreen */
+    .iframe-container:fullscreen {
+      padding: 0;
+      background-color: #000; /* Black background in fullscreen */
+    }
+    .iframe-container:fullscreen iframe {
+      height: 100vh;
+    }
+    .iframe-container:fullscreen .fullscreen-btn {
+      position: fixed; /* Position relative to viewport in fullscreen */
+      top: 20px;
+      left: 20px;
+      z-index: 2147483647; /* Max z-index to ensure visibility */
+      background-color: rgba(255, 255, 255, 0.2); /* Lighter button for dark bg */
+      color: #000;
+    }
+     .iframe-container:fullscreen .fullscreen-btn:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+     }
+
+
     footer {
-      margin-top: 40px;
+      margin-top: 35px;
       text-align: center;
-      font-size: 0.9em;
-      color: #777;
+      font-size: 0.85em;
+      color: #6c757d;
       padding-bottom: 20px;
     }
+    footer p {
+        margin-bottom: 5px;
+    }
+    footer a {
+        color: #16a085;
+        text-decoration: none;
+    }
+    footer a:hover {
+        text-decoration: underline;
+    }
+
 
     /* --- Mobile Responsive --- */
     @media (max-width: 768px) {
       .container {
         padding: 15px;
+        margin: 15px auto;
       }
       header h1 {
-        font-size: 1.8em;
+        font-size: 1.7em;
       }
       .session-list {
-        grid-template-columns: 1fr;
-        gap: 15px;
+        grid-template-columns: 1fr; /* Single column */
+        gap: 12px; /* Reduced gap */
       }
       .session-list a {
-        padding: 20px 15px;
-        flex-direction: column;
-        text-align: center;
-        gap: 10px; /* Reduced gap for tighter vertical layout */
+        padding: 15px 12px; /* Adjusted padding */
+        flex-direction: row; /* Keep horizontal layout for better space use if possible */
+        align-items: center; /* Re-align items */
+        text-align: right; /* Align text to right for RTL */
+        gap: 10px;
       }
       .session-list a:hover {
-        transform: none;
+        transform: none; /* Disable hover transform on mobile if too jumpy */
       }
       .session-list li:hover {
-         transform: translateY(-4px) scale(1.01);
-         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        transform: translateY(-3px) scale(1.01); /* Subtle mobile hover */
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
       }
       .session-number-badge {
-        margin-left: 0;
-        margin-bottom: 8px; /* Reduced margin */
-        min-width: auto; /* Allow badge to be more flexible on mobile */
-        padding: 10px 15px; /* Adjusted padding */
+        margin-left: 10px; /* Keep margin-left */
+        margin-bottom: 0; /* Remove bottom margin as it's row */
+        padding: 6px 10px;
+        font-size: 0.75em;
       }
       .session-title-text {
-        font-size: 1.1em;
-        line-height: 1.3; /* Slightly tighter line-height if needed */
+        font-size: 1em;
+        text-align: right;
       }
       .session-icon {
-        margin-right: 0;
-        margin-bottom: 8px; /* Reduced margin */
+        margin-right: 8px;
+        margin-bottom: 0;
+        font-size: 20px;
       }
       iframe {
-        height: 70vh; /* Further adjust iframe height if needed */
+        height: 65vh;
       }
     }
     
     @media (max-width: 480px) {
       .container {
         padding: 10px;
+        margin: 10px auto;
       }
       header h1 {
-        font-size: 1.5em; /* Further reduced */
+        font-size: 1.4em;
       }
-       header p {
-        font-size: 0.85em;
+      header p {
+        font-size: 0.8em;
       }
       .session-list a {
-        padding: 15px 10px;
-        gap: 8px;
-      }
-      .session-title-text {
-        font-size: 1em;
-      }
-       .session-list li:hover {
-         transform: translateY(-2px) scale(1.005); /* Very subtle hover */
-         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      }
-      .session-number-badge {
-        font-size: 0.8em;
-        padding: 8px 12px;
-      }
-      .session-icon {
-         font-size: 22px;
-      }
-      iframe {
-        height: 65vh;
-      }
-       .fullscreen-btn {
-        width: 40px;
-        height: 40px;
-      }
-      .fullscreen-btn .material-icons {
-        font-size: 20px;
-      }
-    }
-
-    /* --- Specific fixes for very narrow screens --- */
-    @media (max-width: 360px) {
-      header h1 {
-        font-size: 1.3em;
-        line-height: 1.3;
+        padding: 12px 10px;
+        gap: 8px; /* Space between icon, badge, text */
       }
       .session-title-text {
         font-size: 0.9em;
-        line-height: 1.2;
       }
-      .session-list a {
-        padding: 12px 8px;
-        gap: 6px;
+      .session-list li:hover {
+        transform: translateY(-2px); /* Very subtle */
       }
       .session-number-badge {
-        font-size: 0.75em;
-        padding: 6px 10px;
+        padding: 5px 8px;
+        font-size: 0.7em;
+        margin-left: 8px;
       }
-       .session-icon {
-         font-size: 20px;
-      }
-      .container {
-        padding: 8px;
+      .session-icon {
+        font-size: 18px;
+        margin-right: 6px;
       }
       iframe {
         height: 60vh;
       }
+      .fullscreen-btn {
+        width: 36px;
+        height: 36px;
+        top: 8px;
+        left: 8px;
+      }
+      .fullscreen-btn .material-icons {
+        font-size: 18px;
+      }
+      .iframe-container:fullscreen .fullscreen-btn {
+        top: 15px;
+        left: 15px;
+      }
     }
+
   </style>
 </head>
 <body>
@@ -322,22 +348,23 @@
       <h1>فهرست جلسات جزوه فیزیوپاتولوژی گوارش</h1>
       <p>
         تهیه شده توسط مهدی رضایی -
-        <a target="_blank" href="https://callmemahdi01.github.io/about">درباره</a>
+        <a target="_blank" href="https://callmemahdi01.github.io/about">درباره من</a>
       </p>
     </header>
 
     <section class="session-list-container">
       <h2>لیست جلسات</h2>
       <ul class="session-list">
+        <!-- Session items will be dynamically generated or listed here -->
         <li><a onclick="loadSession('1.html')"><span class="material-icons session-icon">biotech</span><span class="session-number-badge">جلسه ۱</span><span class="session-title-text">بیماری‌های متابولیک کبد</span></a></li>
         <li><a onclick="loadSession('2.html')"><span class="material-icons session-icon">medication</span><span class="session-number-badge">جلسه ۲</span><span class="session-title-text">هپاتیت دارویی و کبد چرب</span></a></li>
-        <li><a onclick="loadSession('3.html')"><span class="material-icons session-icon">anatomy</span><span class="session-number-badge">جلسه ۳</span><span class="session-title-text">بیماری‌های پانکراس</span></a></li>
-        <li><a onclick="loadSession('4.html')"><span class="material-icons session-icon">restaurant</span><span class="session-number-badge">جلسه ۴</span><span class="session-title-text">بیماری‌های معده و دئودنوم</span></a></li>
-        <li><a onclick="loadSession('5.html')"><span class="material-icons session-icon">healing</span><span class="session-number-badge">جلسه ۵</span><span class="session-title-text">بیماری‌های مری</span></a></li>
-        <li><a onclick="loadSession('6.html')"><span class="material-icons session-icon">coronavirus</span><span class="session-number-badge">جلسه ۶</span><span class="session-title-text">سرطان کبد</span></a></li>
-        <li><a onclick="loadSession('7.html')"><span class="material-icons session-icon">local_hospital</span><span class="session-number-badge">جلسه ۷</span><span class="session-title-text">بیماری التهابی روده</span></a></li>
-        <li><a onclick="loadSession('8.html')"><span class="material-icons session-icon">bug_report</span><span class="session-number-badge">جلسه ۸</span><span class="session-title-text">هپاتیت ویروسی</span></a></li>
-        <li><a onclick="loadSession('9.html')"><span class="material-icons session-icon">psychology</span><span class="session-number-badge">جلسه ۹</span><span class="session-title-text">سوءجذب</span></a></li>
+        <li><a onclick="loadSession('3.html')"><span class="material-icons session-icon">masks</span><span class="session-number-badge">جلسه ۳</span><span class="session-title-text">بیماری‌های پانکراس</span></a></li>
+        <li><a onclick="loadSession('4.html')"><span class="material-icons session-icon">restaurant_menu</span><span class="session-number-badge">جلسه ۴</span><span class="session-title-text">بیماری‌های معده و دئودنوم</span></a></li>
+        <li><a onclick="loadSession('5.html')"><span class="material-icons session-icon">accessibility_new</span><span class="session-number-badge">جلسه ۵</span><span class="session-title-text">بیماری‌های مری</span></a></li> 
+        <li><a onclick="loadSession('6.html')"><span class="material-icons session-icon">bug_report</span><span class="session-number-badge">جلسه ۶</span><span class="session-title-text">سرطان کبد</span></a></li>
+        <li><a onclick="loadSession('7.html')"><span class="material-icons session-icon">sick</span><span class="session-number-badge">جلسه ۷</span><span class="session-title-text">بیماری التهابی روده</span></a></li> 
+        <li><a onclick="loadSession('8.html')"><span class="material-icons session-icon">coronavirus</span><span class="session-number-badge">جلسه ۸</span><span class="session-title-text">هپاتیت ویروسی</span></a></li>
+        <li><a onclick="loadSession('9.html')"><span class="material-icons session-icon">psychology_alt</span><span class="session-number-badge">جلسه ۹</span><span class="session-title-text">سوءجذب</span></a></li>
         <li><a onclick="loadSession('10.html')"><span class="material-icons session-icon">monitor_heart</span><span class="session-number-badge">جلسه ۱۰</span><span class="session-title-text">علائم بالینی گوارش</span></a></li>
         <li><a onclick="loadSession('11.html')"><span class="material-icons session-icon">science</span><span class="session-number-badge">جلسه ۱۱</span><span class="session-title-text">تست‌های کبدی</span></a></li>
         <li><a onclick="alert('در حال نوشتن جزوه ...')"><span class="material-icons session-icon">pending</span><span class="session-number-badge">جلسه ۱۲</span><span class="session-title-text">سیروز کبدی</span></a></li>
@@ -345,8 +372,9 @@
       </ul>
     </section>
 
-    <div class="iframe-section"> <h2>نمایش جزوه</h2>
-      <div class="iframe-container">
+    <div class="iframe-section">
+      <h2>نمایش جزوه</h2>
+      <div class="iframe-container" id="iframe-viewer-container">
         <button class="fullscreen-btn" onclick="toggleFrameFullscreen()" title="نمایش تمام صفحه">
           <span class="material-icons">fullscreen</span>
         </button>
@@ -356,65 +384,87 @@
 
     <footer>
       <p>تهیه شده توسط مهدی رضایی -
-        <a target="_blank" href="https://callmemahdi01.github.io/about">درباره</a>
+        <a target="_blank" href="https://callmemahdi01.github.io/about">درباره من</a>
       </p>
-      <p>پایان فهرست جلسات. موفق باشید!</p>
+      <p>موفق و پیروز باشید!</p>
     </footer>
   </div>
 
   <script>
     const sessionFrame = document.getElementById('session-frame');
-    const fullscreenBtn = document.querySelector('.fullscreen-btn');
+    const iframeContainer = document.getElementById('iframe-viewer-container'); // Get the container
+    const fullscreenBtn = iframeContainer.querySelector('.fullscreen-btn');
     const fullscreenBtnIcon = fullscreenBtn.querySelector('.material-icons');
 
     function loadSession(filename) {
-      const url = `https://callmemahdi01.github.io/gastroenterology/${filename}`;
+      // Construct the URL for the session file
+      // Assuming files are in a 'sessions' subdirectory relative to this HTML file,
+      // or replace with the absolute path if hosted elsewhere.
+      // const url = `sessions/${filename}`; // Example: if files are in a 'sessions' folder
+      const url = `https://callmemahdi01.github.io/gastroenterology/${filename}`; // Using the provided base URL
+      
       sessionFrame.src = url;
       
-      const iframeContainer = sessionFrame.closest('.iframe-container') || sessionFrame;
-      if (iframeContainer) {
-          setTimeout(() => {
-            window.scrollTo({
-                top: iframeContainer.offsetTop - 20, 
-                behavior: 'smooth'
-            });
-          }, 100);
-      }
+      // Scroll to the iframe container after loading a session
+      // Adding a small delay to ensure the iframe has started loading and layout is stable
+      setTimeout(() => {
+        if (iframeContainer) {
+          window.scrollTo({
+            top: iframeContainer.offsetTop - 20, // 20px offset from the top
+            behavior: 'smooth'
+          });
+        }
+      }, 150); // Increased delay slightly
     }
 
     function toggleFrameFullscreen() {
-      if (!document.fullscreenElement && 
-          !document.webkitFullscreenElement && 
-          !document.mozFullScreenElement && 
-          !document.msFullscreenElement) {
-        if (sessionFrame.src) { 
-          if (sessionFrame.requestFullscreen) {
-            sessionFrame.requestFullscreen();
-          } else if (sessionFrame.mozRequestFullScreen) { 
-            sessionFrame.mozRequestFullScreen();
-          } else if (sessionFrame.webkitRequestFullscreen) { 
-            sessionFrame.webkitRequestFullscreen();
-          } else if (sessionFrame.msRequestFullscreen) { 
-            sessionFrame.msRequestFullscreen();
-          }
-        } else {
-          alert('لطفا ابتدا یک جلسه را برای نمایش انتخاب کنید.');
+      const targetElement = iframeContainer; // The element to make fullscreen
+
+      // Check if a session is loaded in the iframe
+      if (!sessionFrame.src || sessionFrame.src === window.location.href /* check for empty src */) {
+        alert('لطفا ابتدا یک جلسه را برای نمایش انتخاب کنید.');
+        return;
+      }
+
+      // Check current fullscreen state (browser prefixed)
+      const isInFullscreen = document.fullscreenElement ||
+                             document.webkitFullscreenElement ||
+                             document.mozFullScreenElement ||
+                             document.msFullscreenElement;
+
+      if (!isInFullscreen) {
+        // Request fullscreen on the target element
+        if (targetElement.requestFullscreen) {
+          targetElement.requestFullscreen();
+        } else if (targetElement.mozRequestFullScreen) { /* Firefox */
+          targetElement.mozRequestFullScreen();
+        } else if (targetElement.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+          targetElement.webkitRequestFullscreen();
+        } else if (targetElement.msRequestFullscreen) { /* IE/Edge */
+          targetElement.msRequestFullscreen();
         }
       } else {
+        // Exit fullscreen
         if (document.exitFullscreen) {
           document.exitFullscreen();
-        } else if (document.mozCancelFullScreen) { 
+        } else if (document.mozCancelFullScreen) { /* Firefox */
           document.mozCancelFullScreen();
-        } else if (document.webkitExitFullscreen) { 
+        } else if (document.webkitExitFullscreen) { /* Chrome, Safari & Opera */
           document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) { 
+        } else if (document.msExitFullscreen) { /* IE/Edge */
           document.msExitFullscreen();
         }
       }
     }
 
     function updateFullscreenButtonState() {
-      if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+      const isInFullscreen = document.fullscreenElement ||
+                             document.webkitFullscreenElement ||
+                             document.mozFullScreenElement ||
+                             document.msFullscreenElement;
+      
+      // Check if the fullscreen element is our iframe container
+      if (isInFullscreen && (document.fullscreenElement === iframeContainer || document.webkitFullscreenElement === iframeContainer)) {
         fullscreenBtnIcon.textContent = 'fullscreen_exit';
         fullscreenBtn.title = 'خروج از تمام صفحه';
       } else {
@@ -423,10 +473,18 @@
       }
     }
 
+    // Event listeners for fullscreen changes
     document.addEventListener('fullscreenchange', updateFullscreenButtonState);
     document.addEventListener('webkitfullscreenchange', updateFullscreenButtonState);
     document.addEventListener('mozfullscreenchange', updateFullscreenButtonState);
     document.addEventListener('MSFullscreenChange', updateFullscreenButtonState);
+
+    // Optional: Add a nice Persian font if not available system-wide
+    // This can be added to the <head> or loaded via CSS @font-face
+    // For example, using Vazirmatn from Google Fonts:
+    // <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    // Then apply it in body: font-family: 'Vazirmatn', sans-serif; (Already added in CSS)
+
   </script>
 </body>
 </html>
