@@ -285,27 +285,36 @@ footer {
         margin-bottom: 25px;
         padding-bottom: 15px;
     }
-
-
+    header h1 {
+        font-size: 1.8em;
+    }
+    header p {
+        font-size: 1em;
+    }
     h2 {
-
+        font-size: 1.5em;
         margin-top: 30px;
         margin-bottom: 20px;
     }
     h3 { /* General h3 */
-
+        font-size: 1.3em;
         margin-top: 25px;
         margin-bottom: 15px;
     }
-    
+    .disease-block h3 { /* h3 inside disease-block */
+        font-size: 1.25em;
+    }
     h4 {
-
+        font-size: 1.15em;
         margin-top: 20px;
         margin-bottom: 10px;
     }
-
+    p, li {
+        font-size: 0.95em;
+        line-height: 1.7;
+    }
     .nav-button {
-
+        font-size: 0.9em;
         padding: 9px 12px;
         margin: 3px 4px;
     }
@@ -315,10 +324,10 @@ footer {
     }
     th, td {
         padding: 8px 5px;
-
+        font-size: 0.9em;
     }
     .references li {
-
+        font-size: 0.9em;
         padding: 8px;
     }
 }
