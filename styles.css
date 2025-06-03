@@ -274,6 +274,9 @@ footer {
 }
 
 @media (max-width: 480px) {
+    body {
+        scale: 1.1;
+    }
     .container {
         width: 95%;
         padding: 25px 10px;
