@@ -332,17 +332,6 @@ footer {
     }
 }
 
-  /* نوار اسکرول سبز */
-  #scroll-progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    background-color: limegreen;
-    width: 0%;
-    z-index: 9999;
-    transition: width 0.1s linear;
-  }
 
   iframe {
     overflow: hidden;

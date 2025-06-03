@@ -958,7 +958,7 @@ const style = document.createElement('style');
 style.textContent = `
 #scroll-progress-bar {
     position: fixed;
-    top: 0;
+    bottom: 0;
     left: 0;
     height: 2px;
     background-color: #4caf50;
@@ -968,14 +968,13 @@ style.textContent = `
 }
 #scroll-percent {
     position: fixed;
-    top: 1px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 1px;
+    left: 0px;
+    box-shadow: inset 0px 0px 1px 1px white;;
     background-color: rgba(0,0,0,0.5);
-    box-shadow: inset 0px 0px 3px 1px white;;
     color: white;
     padding: 0px 2px;
-    border-radius: 2px;
+    border-radius: 4px;
     font-size: 0.7em;
     z-index: 10000;
     font-family: sans-serif;
