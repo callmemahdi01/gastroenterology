@@ -3,7 +3,9 @@
 @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
 
 @media print {
-
+    body {
+        display: none !important;
+    }
 }
 
 /* --- General Body and Layout --- */
