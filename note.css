@@ -52,11 +52,11 @@ body.annotation-active {
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 8px;
     padding: 5px 5px 0px 5px; /* پدینگ بیشتر برای ظاهر بهتر */
-
+    padding: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     display: none;
     flex-direction: column;
-    gap: 5px;
+    gap: 3px;
 
 }
 
@@ -72,7 +72,7 @@ body.annotation-active {
 .toolbar-group {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 3px;
 }
 
 .tool-button {
@@ -107,18 +107,18 @@ body.annotation-active {
 }
 
 #annotationToolsPanel input[type="color"] {
-    width: 43px;
-    height: 30px;
-    border: 1px solid rgba(206, 212, 218, 0.7);
-    border-radius: 5px;
+    width: 40px;
+    height: 34px;
+    border: 1px solid rgba(255, 255, 255, 0.0);
+    border-radius: 20px;
     padding: 0px;
     cursor: pointer;
-    background-color: rgba(255,255,255,0.7); /* پس‌زمینه برای انتخابگر رنگ */
+    background-color: #0057b300;
 }
 #annotationToolsPanel input[type="number"] {
     width: 30px;
     height: 27px;
-    border: 1px solid rgba(206, 212, 218, 0.7);
+    border: 1px solid rgba(206, 212, 218, 0.2);
     border-radius: 5px;
     text-align: center;
     font-size: 17px;
@@ -136,7 +136,7 @@ body.annotation-active {
     cursor: pointer;
     text-align: center;
     transition: background-color 0.2s ease;
-    margin-bottom: 5px;
+    margin: 5px auto;
 }
 #clearAnnotationsBtn:hover {
     background-color: rgba(241, 176, 183, 0.9);
