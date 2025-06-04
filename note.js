@@ -744,7 +744,7 @@ style.textContent = `
     position: fixed;
     bottom: 0;
     left: 0;
-    height: 2px;
+    height: 3px;
     background-color: #4caf50;
     width: 0%;
     z-index: 9999;
