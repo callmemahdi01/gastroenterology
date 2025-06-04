@@ -50,7 +50,7 @@ class AnnotationApp {
 
         this.penColor = "#000000";
         this.penLineWidth = 1; // مقدار اولیه ضخامت قلم
-        this.highlighterColor = "#FFFF00";
+        this.highlighterColor = "#00ff00";
         this.highlighterLineWidth = 20; // مقدار اولیه ضخامت هایلایتر
         this.eraserWidth = 15;
 
